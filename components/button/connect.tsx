@@ -1,9 +1,11 @@
-import { useState } from "react"
-import { Icon } from "@iconify/react"
-import Modal from "./modal"
+import { useState } from 'react'
+import { Icon } from '@iconify/react'
+import { useConnect } from 'wagmi'
+import Modal from '../modal'
 
 export default function ConnectButton() {
   const [expanded, setExpanded] = useState(false)
+  const { connect, connectors } = useConnect()
 
   return (
     <>
@@ -20,9 +22,11 @@ export default function ConnectButton() {
 
           <ul className="menu">
             <li>
-              <a href="#" onClick={e => e.preventDefault()}>
-                <Icon icon="logos:metamask-icon" /> Metamask
-              </a>
+              {connectors.map((connector, index) => (
+                <button key={index} onClick={e => connect({ connector })}>
+                  <Icon icon="logos:metamask-icon" /> {connector.name}
+                </button>
+              ))}
             </li>
           </ul>
         </Modal>
