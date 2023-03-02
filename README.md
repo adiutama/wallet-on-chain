@@ -1,38 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Wallet On Chain
+Wallet On Chain is a web application for managing cryptocurrencies built with Next.js, React, TypeScript, and Ethereum's JavaScript library called Ethers.
 
 ## Getting Started
+To get started with Wallet On Chain, follow these steps:
 
-First, run the development server:
+## Clone this repository
+Install dependencies using npm:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+1. Copy code
 ```
+npm install
+```
+2. Run the development server:
+3. Copy code
+```
+npm run dev
+```
+4. Open http://localhost:3000 in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Available Scripts
+In the project directory, you can run the following scripts:
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+`npm run dev`
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+Runs the development server.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+`npm run build`
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Builds the application for production.
 
-## Learn More
+`npm run start`
 
-To learn more about Next.js, take a look at the following resources:
+Starts the production server.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`npm run lint`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Runs ESLint to check for linting errors in the code.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## License
+This project is licensed under the MIT License. See the LICENSE file for more information.
