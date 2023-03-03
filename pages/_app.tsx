@@ -1,11 +1,12 @@
 import '@/styles/globals.css'
-import { WagmiConfig, createClient, configureChains, goerli } from 'wagmi'
+import { WagmiConfig, createClient, configureChains } from 'wagmi'
+import { goerli, polygonMumbai } from 'wagmi/chains'
 import { publicProvider } from 'wagmi/providers/public'
 import { MetaMaskConnector } from 'wagmi/connectors/metaMask'
 import type { AppProps } from 'next/app'
 
 const { chains, provider } = configureChains(
-  [goerli],
+  [goerli, polygonMumbai],
   [publicProvider()]
 )
  
