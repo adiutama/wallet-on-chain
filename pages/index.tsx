@@ -17,8 +17,8 @@ export default function Home() {
     <DefaultLayout>
       <div className="mb-8">
         <div className="dropdown">
-          <label tabIndex={0} className="btn btn-ghost btn-outline m-4 text-lg">
-            <Icon icon="mdi:internet" />
+          <label tabIndex={0} className="btn btn-ghost btn-outline gap-2 m-4 text-lg">
+            <Icon icon="mdi:internet" /> {chain?.name}
           </label>
           <ul tabIndex={0} className="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52">
             <li className="menu-title">
