@@ -4,6 +4,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard'
 import { Icon } from '@iconify/react'
 import Davatar from '@davatar/react'
 import DefaultLayout from '@/layouts/default'
+import SendButton from '@/components/button/send'
 
 export default function Home() {
   const { address } = useAccount()
@@ -57,6 +58,10 @@ export default function Home() {
         <div className="stat place-items-center">
           <div className="stat-title">Balance</div>
           <div className="stat-value">{`${data?.formatted} ${data?.symbol}`}</div>
+        </div>
+
+        <div className="flex flex-row gap-4">
+          <SendButton max={Number(data?.formatted)} symbol={data?.symbol} />
         </div>
       </div>
     </DefaultLayout>

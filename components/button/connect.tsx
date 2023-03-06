@@ -4,33 +4,21 @@ import { useConnect } from 'wagmi'
 import Modal from '../modal'
 
 export default function ConnectButton() {
-  const [expanded, setExpanded] = useState(false)
   const { connect, connectors } = useConnect()
 
   return (
     <>
-      <button className="btn" onClick={() => setExpanded(!expanded)}>Connect Wallet</button>
-
-      {expanded && (
-        <Modal className="w-72" onClose={() => setExpanded(false)}>
-          <div className="p-4 flex flex-row justify-between items-center">
-            <h2 className="font-bold">Connect a Wallet</h2>
-            <button className="btn btn-circle btn-outline btn-ghost btn-xs" onClick={() => setExpanded(false)}>
-              <Icon icon="material-symbols:close" />
+      <label htmlFor="connect" className="btn" >Connect Wallet</label>
+      <Modal id="connect" title="Connect a Wallet" className="w-72">
+        <div className="flex flex-col gap-4">
+          {connectors.map((connector, index) => (
+            <button key={index} className="btn btn-outline btn-block gap-2" onClick={e => connect({ connector })}>
+              <Icon icon="logos:metamask-icon" />
+              {connector.name}
             </button>
-          </div>
-
-          <ul className="menu">
-            <li>
-              {connectors.map((connector, index) => (
-                <button key={index} onClick={e => connect({ connector })}>
-                  <Icon icon="logos:metamask-icon" /> {connector.name}
-                </button>
-              ))}
-            </li>
-          </ul>
-        </Modal>
-      )}
+          ))}
+        </div>
+      </Modal>
     </>
   )
 }

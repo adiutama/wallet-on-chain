@@ -1,25 +1,44 @@
-import { ReactEventHandler, ReactNode } from "react"
+import { EventHandler, MouseEventHandler, ReactNode, useEffect, useState } from "react"
 import { createPortal } from "react-dom"
 
 type ModalProps = {
-  selector?: string,
+  id: string,
+  title?: string,
   children: ReactNode,
-  onClose?: ReactEventHandler,
   className?: string,
-  backdropClassName?: string,
-  wrapperClassName?: string,
+  target?: string,
+  onOpen?: () => void,
+  onClose?: () => void,
 }
 
-export default function Modal({ selector = "body", children, onClose, className, backdropClassName, wrapperClassName }: ModalProps) {
-  const element = document.querySelector(selector)!
+export default function Modal({ id, title, children, className, onOpen, onClose, target = "body"}: ModalProps) {
+  const [opened, setOpened] = useState(false)
+  const element = document.querySelector(target)!
+
+  useEffect(() => {
+    if (opened) {
+      onOpen?.()
+    } else {
+      onClose?.()
+    }
+  }, [opened])
 
   return createPortal(
-    <div className={`absolute top-0 left-0 w-screen h-screen flex justify-center items-center ${wrapperClassName}`}>
-      <div className={`absolute w-full h-full bg-black bg-opacity-10 ${backdropClassName}`} onClick={onClose} />
-      <div className={`rounded-lg border shadow-md bg-white z-10 overflow-hidden ${className}`}>
-        {children}
+    <>
+      <input type="checkbox" id={id} onChange={e => setOpened(e.target.checked)} className="modal-toggle" />
+      <div className="modal">
+        <div className={`modal-box relative ${className}`}>
+          <div className="flex flex-row-reverse justify-between mb-6">
+            <label htmlFor={id} className="btn btn-xs btn-circle btn-outline">✕</label>
+            {title && (
+              <h3 className="text-lg font-bold">{title}</h3>
+            )}
+          </div>
+
+          {children}
+        </div>
       </div>
-    </div>,
+    </>,
     element
   )
 }
